@@ -1,5 +1,5 @@
 FROM mysql:8.0
 
-COPY ./sql /tmp
+COPY ./mysql.sql /tmp
 
-CMD [ "mysqld", "--init-file=/tmp/sql" ]
+CMD [ "mysqld", "--init-file=/tmp/mysql.sql" ]
