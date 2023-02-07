@@ -32,8 +32,6 @@ jobs:
         ECR_REPOSITORY: clo835-assignment1-mysql
         IMAGE_TAG: mysql
       run: |
-        cd mysql/
-        ls -ltra
         # Docker build
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
