@@ -42,6 +42,7 @@ resource "aws_instance" "my_amazon" {
   instance_type               = lookup(var.instance_type, var.env)
   key_name                    = aws_key_pair.my_key.key_name
   vpc_security_group_ids             = [aws_security_group.my_sg.id]
+  iam_instance_profile        = "LabInstanceProfile"
   associate_public_ip_address = false
 
   lifecycle {
@@ -127,8 +128,16 @@ resource "aws_eip" "static_eip" {
   )
 }
 
-resource "aws_ecr_repository" "clo835-assignment1" {
-  name                 = "clo835-assignment1"
+resource "aws_ecr_repository" "clo835-assignment1-webapp" {
+  name                 = "clo835-assignment1-webapp"
+  image_tag_mutability = "MUTABLE"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+}
+  resource "aws_ecr_repository" "clo835-assignment1-mysql" {
+  name                 = "clo835-assignment1-mysql"
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {
