@@ -30,7 +30,7 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: clo835-assignment1-webapp
-        IMAGE_TAG: webapplication
+        IMAGE_TAG: webapplicationv
       run: |
         # Docker build
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f Dockerfile .
